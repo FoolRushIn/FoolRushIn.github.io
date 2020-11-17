@@ -96,7 +96,7 @@ tags:
 
    
 
-#### 青蛙跳台阶问题
+##### 青蛙跳台阶问题
 
 一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 `n` 级的台阶总共有多少种跳法。
 
@@ -262,81 +262,6 @@ class Solution {
 
 
 
-#### 表示数值的字符串 （剑指offer 20）
-
-请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串"+100"、"5e2"、"-123"、"3.1416"、"-1E-16"、"0123"都表示数值，但"12e"、"1a3.14"、"1.2.3"、"+-5"及"12e+5.4"都不是。
-
-- 该问题即是对字符串规律的总结，可以使用**有限状态自动机**（可以参考[博客中文章](https://suelcun.xyz/blogs/Algorithms/String/%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E7%8A%B6%E6%80%81%E6%9C%BA.html)）
-- 规律总结：
-  1. 字符串首尾可能为空格
-  2. `.`出现的情况：只能出现一次，并且在`e`之前
-  3. `e`出现的情况：只能出现一次，并且在数字之后
-  4. `+ 或 -`出现的情况：在首尾或`e`之后的以为
-
-```java
-//对字符串逐个进行判断
-class Solution {
-    public boolean isNumber(String s) {
-        if (s == null || s.length() == 0){
-            return false;
-        }
-        s = s.trim();//去除首位空格
-        boolean numFlag = false;
-        boolean dotFlag = false;
-        boolean eFlag = false;
-        for (int i = 0; i < s.length(); i++){
-            if (s.charAt(i) >= '0' && s.charAt(i) <= '9'){
-                numFlag = true;
-            }else if (s.charAt(i) == '.' && !dotFlag && !eFlag){
-                dotFlag = true;
-            }else if ((s.charAt(i) == 'e' || s.charAt(i) == 'E') && !eFlag && numFlag){
-                eFlag = true;
-                numFlag = false;//将数字的标志位置为false，避免发生123e这种非法请求
-            }else if ((s.charAt(i) == '+' || s.charAt(i) == '-') && ((i == 0) || s.charAt(i-1) == 'e' || s.charAt(i-1) == 'E')){
-                numFlag = false;
-            }else{
-                return false;
-            }
-        }
-        return numFlag;//最后一位一定是数字
-    }
-}
-```
-
-```java
-//使用有限状态自动机
-class Solution {
-    public boolean isNumber(String s) {
-        Map[] states = {
-            new HashMap<>() {{ put(' ', 0); put('s', 1); put('d', 2); put('.', 4); }}, // 0.
-            new HashMap<>() {{ put('d', 2); put('.', 4); }},                           // 1.
-            new HashMap<>() {{ put('d', 2); put('.', 3); put('e', 5); put(' ', 8); }}, // 2.
-            new HashMap<>() {{ put('d', 3); put('e', 5); put(' ', 8); }},              // 3.
-            new HashMap<>() {{ put('d', 3); }},                                        // 4.
-            new HashMap<>() {{ put('s', 6); put('d', 7); }},                           // 5.
-            new HashMap<>() {{ put('d', 7); }},                                        // 6.
-            new HashMap<>() {{ put('d', 7); put(' ', 8); }},                           // 7.
-            new HashMap<>() {{ put(' ', 8); }}                                         // 8.
-        };
-        //使用Map存储状态转移表。
-        //HashMap中k为行动，v为状态，执行k则转换为v状态。后边的数字表示初始状态，如0执行s，则状态变为1
-        
-        int p = 0; //初始化状态
-        char t;
-        for(char c : s.toCharArray()) {
-            if(c >= '0' && c <= '9') t = 'd';
-            else if(c == '+' || c == '-') t = 's';
-            else if(c == 'e' || c == 'E') t = 'e';
-            else if(c == '.' || c == ' ') t = c;
-            else t = '?';
-            if(!states[p].containsKey(t)) return false;
-            p = (int)states[p].get(t);
-        }
-        return p == 2 || p == 3 || p == 7 || p == 8;
-    }
-}
-```
-
 
 
 # 二叉树
@@ -433,6 +358,8 @@ class Solution {
 
 - 使用额外的空间（新建一个数组或容器），使用数组来记录元素出现的次数，或使用set的元素不可重复特性
 - 不适用额外的空间（类似原地排序），从左到右依次将对应下标的元素放在相应位置，若遇到本元素和交换元素都对应下标，则是重复了
+
+
 
 
 
@@ -608,7 +535,7 @@ public class Solution {
 
 ## 单链表
 
-#### 删除链表的结点
+#### 删除链表的结点（剑指offer 18）
 
 给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。返回删除后的链表的头节点。
 
@@ -673,4 +600,195 @@ class Solution {
 ```
 
 
+
+#### 链表中倒数第k个结点（剑指offer 22）
+
+输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。
+
+- 本题大可遍历链表获取其长度，再直接定位到倒数第k个结点。但是太低端
+- 使用双指针的方法。先将两个指针都指向头结点head，令指针1向前走k个结点；此时令两个指针同时向前走，当指针1判断为null时，指针2所在结点就是倒数第k个结点
+
+![](D:\blogImage\924c58447a25fdfa664dba9649d83e2e0b41a7136238696bfb24a363cbc68bb2-Picture7.png)
+
+```java
+class Solution {
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode former = head, latter = head;
+        for(int i = 0; i < k; i++)
+            former = former.next;
+        while(former != null) {
+            former = former.next;
+            latter = latter.next;
+        }
+        return latter;
+    }
+}
+```
+
+
+
+#### 反转链表（剑指offer 24）
+
+定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
+
+- 此题有两种方法，迭代和递归
+  - 双指针迭代：设置`res和cur`两个指针，分别指向null和头结点，用来存储新链表和指向当前结点，在迭代的时候将结点一个个摘出来并作为新链表的头结点
+  - 递归：先递归到链表的尾结点，将尾结点作为头结点，不断回溯并将前一个结点接在后边
+
+双指针迭代：
+
+![双指针流程图](D:\blogImage\1604779288-jExDGV-Picture3.png)
+
+```java
+//双指针
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null)	return null;
+        ListNode res = null, cur = head, temp;
+        while(cur != null){
+            temp = cur.next;
+            cur.next = res;
+            res = cur;	//因为此时cur才是新链表的头结点，这行代码就是将头结点给res
+            cur = temp;	
+        }
+        return res;
+    }
+}
+```
+
+递归
+
+![](D:\blogImage\dacd1bf55dec5c8b38d0904f26e472e2024fc8bee4ea46e3aa676f340ba1eb9d-递归.gif)
+
+```java
+class Solution {
+	public ListNode reverseList(ListNode head) {
+		//递归终止条件是当前为空，或者下一个节点为空
+		if(head==null || head.next==null) {
+			return head;
+		}
+		//这里的cur就是最后一个节点,新链表的头结点
+		ListNode cur = reverseList(head.next);
+		//如果链表是 1->2->3->4->5，那么此时的cur就是5
+		//而head是4，head的下一个是5，下下一个是空
+		//所以head.next.next 就是5->4
+		head.next.next = head;
+		//防止链表循环，需要将head.next设置为空
+		head.next = null;
+		//每层递归函数都返回cur，也就是最后一个节点
+		return cur;
+	}
+}
+```
+
+
+
+#### 合并两个排序的链表（剑指offer 25）
+
+输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+
+- 通过`while`循环或者递归实现就行了
+
+```java
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null)	return l2;
+        if (l2 == null) return l1;
+        if (l1 == null && l2 == null)	return null;
+
+        ListNode head = null;
+        if (l1.val < l2.val) {
+            head = l1;
+            head.next = mergeTwoLists(l1.next, l2);
+        } else {
+            head = l2;
+            head.next = mergeTwoLists(l1, l2.next);
+        }
+        return head;
+    }
+}
+```
+
+
+
+
+
+
+
+# 字符串
+
+#### 表示数值的字符串 （剑指offer 20）
+
+请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串"+100"、"5e2"、"-123"、"3.1416"、"-1E-16"、"0123"都表示数值，但"12e"、"1a3.14"、"1.2.3"、"+-5"及"12e+5.4"都不是。
+
+- 该问题即是对字符串规律的总结，可以使用**有限状态自动机**（可以参考[博客中文章](https://suelcun.xyz/blogs/Algorithms/String/%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E7%8A%B6%E6%80%81%E6%9C%BA.html)）
+- 规律总结：
+  1. 字符串首尾可能为空格
+  2. `.`出现的情况：只能出现一次，并且在`e`之前
+  3. `e`出现的情况：只能出现一次，并且在数字之后
+  4. `+ 或 -`出现的情况：在首尾或`e`之后的以为
+
+```java
+//对字符串逐个进行判断
+class Solution {
+    public boolean isNumber(String s) {
+        if (s == null || s.length() == 0){
+            return false;
+        }
+        s = s.trim();//去除首位空格
+        boolean numFlag = false;
+        boolean dotFlag = false;
+        boolean eFlag = false;
+        for (int i = 0; i < s.length(); i++){
+            if (s.charAt(i) >= '0' && s.charAt(i) <= '9'){
+                numFlag = true;
+            }else if (s.charAt(i) == '.' && !dotFlag && !eFlag){
+                dotFlag = true;
+            }else if ((s.charAt(i) == 'e' || s.charAt(i) == 'E') && !eFlag && numFlag){
+                eFlag = true;
+                numFlag = false;//将数字的标志位置为false，避免发生123e这种非法请求
+            }else if ((s.charAt(i) == '+' || s.charAt(i) == '-') && ((i == 0) || s.charAt(i-1) == 'e' || s.charAt(i-1) == 'E')){
+                numFlag = false;
+            }else{
+                return false;
+            }
+        }
+        return numFlag;//最后一位一定是数字
+    }
+}
+```
+
+```java
+//使用有限状态自动机
+class Solution {
+    public boolean isNumber(String s) {
+        Map[] states = {
+            new HashMap<>() {{ put(' ', 0); put('s', 1); put('d', 2); put('.', 4); }}, // 0.
+            new HashMap<>() {{ put('d', 2); put('.', 4); }},                           // 1.
+            new HashMap<>() {{ put('d', 2); put('.', 3); put('e', 5); put(' ', 8); }}, // 2.
+            new HashMap<>() {{ put('d', 3); put('e', 5); put(' ', 8); }},              // 3.
+            new HashMap<>() {{ put('d', 3); }},                                        // 4.
+            new HashMap<>() {{ put('s', 6); put('d', 7); }},                           // 5.
+            new HashMap<>() {{ put('d', 7); }},                                        // 6.
+            new HashMap<>() {{ put('d', 7); put(' ', 8); }},                           // 7.
+            new HashMap<>() {{ put(' ', 8); }}                                         // 8.
+        };
+        //使用Map存储状态转移表。
+        //HashMap中k为行动，v为状态，执行k则转换为v状态。后边的数字表示初始状态，如0执行s，则状态变为1
+        
+        int p = 0; //初始化状态
+        char t;
+        for(char c : s.toCharArray()) {
+            if(c >= '0' && c <= '9') t = 'd';
+            else if(c == '+' || c == '-') t = 's';
+            else if(c == 'e' || c == 'E') t = 'e';
+            else if(c == '.' || c == ' ') t = c;
+            else t = '?';
+            if(!states[p].containsKey(t)) return false;
+            p = (int)states[p].get(t);
+        }
+        return p == 2 || p == 3 || p == 7 || p == 8;
+    }
+}
+```
 

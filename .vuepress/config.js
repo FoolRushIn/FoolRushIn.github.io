@@ -1,7 +1,7 @@
 module.exports = {
 
   "plugins": [
-	['@vuepress/last-updated'],
+	["@vuepress/last-updated"],
     [
       "dynamic-title",
       {
