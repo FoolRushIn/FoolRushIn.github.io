@@ -49,7 +49,7 @@ module.exports = {
   ],
   "theme": "reco",
   "themeConfig": {
-    "lastUpdated": 'Last Updated',
+    "lastUpdated": "Last Updated",
     "nav": [
       {
         "text": "Home",
