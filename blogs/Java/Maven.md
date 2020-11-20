@@ -15,7 +15,6 @@ tags:
 
 - 将项目拆分成若干个模块
 
-- - 
 
 **maven 的核心概念:**
 
@@ -55,7 +54,7 @@ tags:
 
 ( maven 在编译, 测试, 运行项目时, 各自使用一套 classpath )
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard2.png)
+![](https://i.loli.net/2020/11/18/hYgXdIV3iOpnazK.png)
 
 - **compile**
 
@@ -85,7 +84,7 @@ eg:A->b->c  A依赖于B，B依赖于C，如果试A依赖于C成立，则需要B�
 
 eg.HelloWorldTime ->HelloWorld2 ->junit
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard3.png)
+![](https://i.loli.net/2020/11/18/qzrsNHRFdQ7wUIW.png)
 
 看上面的例子,如果两个项目都引入的Junit ,那么maven是如何来避免 Jar冲突的呢。
 
@@ -101,7 +100,7 @@ i.在同一个pom.xml文件中有2个相同的依赖（覆盖）：后面声明�
 
 ii.如果是不同的 pom.xml中有2个相同的依赖（优先）：则先声明的依赖 ，会覆盖后声明的依赖
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard4.png)
+![](https://i.loli.net/2020/11/18/pebNWdUY3DP6FKc.png)
 
 **存在：A->-B>-C->X(1.0)和A->D->X(2.0)**
 
@@ -142,9 +141,9 @@ ii.如果是不同的 pom.xml中有2个相同的依赖（优先）：则先声�
 
 这个profiles 可以配置jdk等很多属性,也可以对一些依赖的版本号进行配置 ，比如统一编码，
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard5.png)
+![](https://i.loli.net/2020/11/18/Ei2d5qKp7rlPxFg.png)
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard6.png)
+![](https://i.loli.net/2020/11/18/YGxaMLF7otepCuf.png)
 
 **maven中继承的概念:**
 
@@ -194,7 +193,7 @@ eg: A-->B ，A继承与B，则 B是一个父类的存在
 
 **Maven的聚合特性:**
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard7.png)
+![](https://i.loli.net/2020/11/18/DYpl1SWAxi2rEvc.png)
 
 聚合特性可以帮助我们把项目的多个模块聚合在一起，使用一条命令进行构建，即一条命令实现构建多个项目
 
@@ -202,7 +201,7 @@ eg: A-->B ，A继承与B，则 B是一个父类的存在
 
 但是如果我们想将这两个模块一起构建, 就**需要建立一个模块C做为一个聚合模块。**
 
-![](http://qjz3qpz9t.hn-bkt.clouddn.com/clipboard8.png)
+![](https://i.loli.net/2020/11/18/H7hbfwmrXkWuV51.png)
 
 C模块的打包方式必须为pom。
 

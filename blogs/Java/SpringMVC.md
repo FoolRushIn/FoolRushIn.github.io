@@ -10,7 +10,7 @@ SpringMVC配置文件: springmvc.xml
 
 选中常用的命名空间: 	
 
-![img](https://wx2.sbimg.cn/2020/08/31/6KyPa.png)
+![](https://i.loli.net/2020/11/18/526aWg3n98XpxKO.png)
 
 **普通的servlet流程:** 
 
@@ -150,9 +150,9 @@ headers： 指定request中必须包含某些指定的header值，才能让该�
 
 **//第三步**
 
-![img](https://wx2.sbimg.cn/2020/08/31/6KF8I.md.png)
+![](https://i.loli.net/2020/11/18/mLJsw6XUjx38cEa.png)
 
-![img](https://wx1.sbimg.cn/2020/08/31/6KfpK.md.png)
+![](https://i.loli.net/2020/11/18/STNVOiq2Lpuw9Cr.png)
 
 **当用rest风格传值时，用@pathVariable， 用普通方法传值时，用@RequestParam**
 
@@ -233,7 +233,7 @@ public class handler {
 
 **约定: map的key就是即将查询的 方法类型参数的首字母小写**
 
-![img](https://wx1.sbimg.cn/2020/08/31/6WmAo.md.png)
+![](https://i.loli.net/2020/11/18/pPWYQuyLjim5IoK.png)
 
 **通过 @ModelAttribute 修饰的方法, 会在每次请求前先执行, 并且该方法中的 map.put() 方法 可以将对象放入即将查询的参数当中**
 
@@ -257,13 +257,13 @@ JstlView 可以解析jstl 实现国际化操作
 
 1. **创建资源文件**
 
-![img](https://wx2.sbimg.cn/2020/08/31/6W2o2.md.png)
+![](https://i.loli.net/2020/11/18/6SRECe35uhPwjkl.png)
 
 **如果其他资源文件中没有设置一些属性的值, 则在该文件中查找**
 
 1. **配置SpringMVC.xml, 加载资源文件**
 
-2. 1. **会在springMVC响应时介入, 实现国际化资源文件**
+2. **会在springMVC响应时介入, 实现国际化资源文件**
    2. **springMVC启动时, 会自动查找一个ID="messageSource" 的bean, 如果有,加载**
 
 ```xml
@@ -276,10 +276,10 @@ JstlView 可以解析jstl 实现国际化操作
 
 1. **通过 jstl 使用国际化**
 
-2. 1. **jstl.jar  standar.jar**
+2. **jstl.jar  standar.jar**
    2. **在jsp头标签中引入**
 
-![img](https://wx1.sbimg.cn/2020/08/31/6WC18.md.png)
+![](https://i.loli.net/2020/11/18/VAl8Sd7JxFWgymK.png)
 
 ```xml
 <body>   
@@ -290,13 +290,7 @@ JstlView 可以解析jstl 实现国际化操作
 
 **InternalResourceView的其他功能:**
 
-1.
-
-上面通过Controller(@RequestMapping) 实现了请求的拦截跳转  即:
-
-index.jsp  --->  Controller(@RequestMapping)  --->success.jsp
-
-要用SpringMVC实现: index.jsp  --> success.jsp
+1. 上面通过Controller(@RequestMapping) 实现了请求的拦截跳转  即:`index.jsp  --->  Controller(@RequestMapping)  --->success.jsp`,要用SpringMVC实现: `index.jsp  --> success.jsp`
 
 ```xml
 <mvc:view-controller path="请求路径 handler/welcome" view-name="跳转路径 "/>
@@ -320,17 +314,17 @@ index.jsp  --->  Controller(@RequestMapping)  --->success.jsp
 }
 ```
 
-\2. 指定请求方式
+2. 指定请求方式
 
 上面提到默认使用请求转发的方式, 现在转为重定向 ( 如果使用此方法, MVC会忽略视图解析器的前缀和后缀, 需要手动加上 )
 
-![img](https://wx2.sbimg.cn/2020/08/31/6WDEJ.md.png)
+![](https://i.loli.net/2020/11/18/D3HstKeXAJzpijf.png)
 
-\3. 处理静态资源
+3. 处理静态资源
 
 在MVC中, 如果直接访问静态资源, 结果是404  原因:
 
-![img](https://wx1.sbimg.cn/2020/08/31/6Wokm.md.png)
+![](https://i.loli.net/2020/11/18/x2TpHuEAZU18QlK.png)
 
 dispatcherServlet是入口
 
@@ -344,7 +338,7 @@ dispatcherServlet是入口
 <mvc:annotation-driven></mvc:annotation-driven>
 ```
 
-\4. **类型转换**
+4. **类型转换**
 
 a. Spring自带一些常见的类型转换器: 
 
@@ -357,7 +351,7 @@ b. 可以自定义
 
 org.springframework.context.support.ConversionServiceFactoryBean
 
-**5. SpringMVC提供了很多注解,方便数据格式化**
+5. **SpringMVC提供了很多注解,方便数据格式化**
 
 ```xml
 <bean id="ConversionService" class="org.springframework.format.support.Forg.springframework.format.support.FormattingConversionServiceFactoryBean">	    
@@ -378,7 +372,7 @@ org.springframework.context.support.ConversionServiceFactoryBean
 
 @DateTimeFormat(pattern="yyyy-MM-dd") private Data bir(); //@DateTimeFormat(pattern="yyyy-MM-dd")可以将形如1988-12-01的字符串转换为 //java.util.Date类型。
 
-![img](https://wx2.sbimg.cn/2020/08/31/6W6vd.md.png)
+![](https://i.loli.net/2020/11/18/3tFDoKTWk4SPq81.png)
 
 **关于@BindingResult** 
 
@@ -433,7 +427,7 @@ public String upload(@RequestParam("file") MultipartFile file, HttpServletReques
 
 **通过实现HandlerInterceptor接口**
 
-![img](https://wx1.sbimg.cn/2020/08/31/6WG44.md.png)
+![](https://i.loli.net/2020/11/18/DYTNq2lOKG9RUtx.png)
 
 **渲染: 将JSP中的<% String name =%>,  css, js等组装完毕,最终显示出来,就是渲染**
 

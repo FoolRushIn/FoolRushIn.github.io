@@ -8,13 +8,13 @@ tags:
 ---
 
 
-![img](https://wx1.sbimg.cn/2020/08/31/6KLGl.md.png)
+![](https://i.loli.net/2020/11/18/zeMZucSm5vby9jl.png)
 
 **MyBatis 可以简化 JDBC 操作, 实现数据的持久化, 使用 ORM 思想实现了结果集的封装**
 
-![img](https://wx1.sbimg.cn/2020/08/31/6KuO2.md.png)
+![](https://i.loli.net/2020/11/18/Dkvu8lAz4bTXLaI.png)
 
-![img](https://wx1.sbimg.cn/2020/08/31/6KeuJ.md.png)
+![](https://i.loli.net/2020/11/18/REgZcjwOeIivXht.png)
 
 MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 **XML 或注解**来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Ordinary Java Object,普通的 Java对象)映射成数据库中的记录。
 
@@ -22,7 +22,7 @@ MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过�
 
 Object relational Mapping , 对象关系映射, 把数据库表和实体类的属性对应起来, **操作实体类即可以实现操作数据库表**
 
-![img](https://wx2.sbimg.cn/2020/08/31/6Kt8m.md.png)
+![](https://i.loli.net/2020/11/18/SkLhFqBJZwmO1At.png)
 
 mybatis规定:
 
@@ -207,7 +207,7 @@ public interface UserMapperI {
 
 **实现关联表查询:** 
 
-![img](https://wx1.sbimg.cn/2020/08/31/6KzmU.png)
+![](https://i.loli.net/2020/11/18/l7I1NMdtwrUseXi.png)
 
 其中 class 表对应的实体类中, 定义一个 teacher 属性
 
@@ -352,7 +352,7 @@ DELIMITER ;
 - **二级缓存**与一级缓存其机制相同，默认也是采用 PerpetualCache，HashMap存储，不同在于其**存储作用域为 Mapper(Namespace)**，并且**可自定义存储源**，如 Ehcache。
 - 对于缓存数据更新机制，当某一个作用域(一级缓存Session/二级缓存Namespaces)的进行了 C/U/D 操作后，默认该作用域下所有 select 中的缓存将被clear。
 
-![img](https://wx2.sbimg.cn/2020/08/31/6K7gd.md.png)
+![](https://i.loli.net/2020/11/18/ZeRvJrL8E59VnfH.png)
 
 **动态SQL:**
 

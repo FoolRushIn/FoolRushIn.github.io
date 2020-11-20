@@ -11,8 +11,6 @@ tags:
 
 https://www.cnblogs.com/jichi/p/10165538.html
 
- 
-
 将一个普通的类变成有特定功能的类: 
 
 1. 继承类
@@ -25,7 +23,7 @@ https://www.cnblogs.com/jichi/p/10165538.html
 1. 创建对象
 2. 给对象的属性赋值
 
-![img](https://wx2.sbimg.cn/2020/08/31/6YBMG.md.png)
+![](https://i.loli.net/2020/11/18/tWcimPz6CELAU3q.png)
 
 **总结:** 
 
@@ -34,7 +32,7 @@ IOC/DI 无论需要什么对象, 都可以直接去 Springioc 容器中获取, �
 因此之后的IOC分为2步: 
 
 1. 先给 springioc 中存放对象并赋值
-2.  拿
+2.  拿取对象
 
 **SpringIoc容器初始化:**	
 
@@ -63,15 +61,12 @@ https://blog.csdn.net/qq_41885819/article/details/95360777
 
 **spring中的工厂BeanFactory与ApplicationContext的区别**
 
-**1、BeanFactory**
+1. BeanFactory
+   1. spring原始接口，功能较为单一，在从容器中获得对象的时候才会创建对象。
+2. ApplicationContext
+   1. 每次启动容器的时候，初始化容器中的所有对象并提供更多功能。其中的实现类ClassPathXmlApplicationContext是加载类路径下的spring配置文件，FileSystemXmlApplicationContext是加载本地磁盘下spring的配置文件。
 
-**spring原始接口，功能较为单一，在从容器中获得对象的时候才会创建对象。**
-
-**2、ApplicationContext**
-
-**每次启动容器的时候，初始化容器中的所有对象并提供更多功能。其中的实现类ClassPathXmlApplicationContext是加载类路径下的spring配置文件，FileSystemXmlApplicationContext是加载本地磁盘下spring的配置文件。**
-
-![img](https://wx2.sbimg.cn/2020/08/31/6YN9n.md.png)
+![](https://i.loli.net/2020/11/18/urkEWaKg9lnNsfU.png)
 
 **IOC容器赋值:** 
 
@@ -81,23 +76,23 @@ https://blog.csdn.net/qq_41885819/article/details/95360777
 
 - set 注入:	
 
-- - 通过setXxx()赋值, 赋值默认使用的是set()方法;底层通过反射实现
+  - 通过setXxx()赋值, 赋值默认使用的是set()方法;底层通过反射实现
   - <property...>
 
 - 构造器注入:	
 
-- - 通过构造方法赋值
+  - 通过构造方法赋值
   - <constructor-arg...>
   - 如果<constructor-arg...>的顺序与构造方法参数的顺序不一致, 则需要通过type或者index		  或者name指定
 
 - p命名空间注入
 
-- - xmlns:p="http://www.springframework.org/schema/p"
+  - xmlns:p="http://www.springframework.org/schema/p"
   - `<bean name="user" class="com.jichi.entity.User" p:name="小白" p:age="10"></bean>`
 
 - 自动装配:
 
-- - 只适用于 ref 类型(引用类型)
+  - 只适用于 ref 类型(引用类型)
   - 约定优于配置
 
 **注意:** 
@@ -107,7 +102,7 @@ https://blog.csdn.net/qq_41885819/article/details/95360777
 
 **value属性和<value>注入方式的区别:**	
 
-![img](https://wx1.sbimg.cn/2020/08/31/6ZMwl.md.png)
+![](https://i.loli.net/2020/11/18/1e9vX8NVcOiW2U4.png)
 
 **使用注解实现事务(声名式事务)**https://blog.csdn.net/jiadajing267/article/details/81056057
 
@@ -126,7 +121,7 @@ https://blog.csdn.net/qq_41885819/article/details/95360777
 
 ## **AOP: 面向切面编程**
 
-![img](https://wx1.sbimg.cn/2020/08/31/6Z0xJ.md.png)
+![](https://i.loli.net/2020/11/18/WedJHXz6nNK3i7U.png)
 
 **1. 通过xml配置方式实现AOP**
 
@@ -145,9 +140,9 @@ https://blog.csdn.net/qq_41885819/article/details/95360777
 </aop:config>
 ```
 
-![img](https://wx2.sbimg.cn/2020/08/31/6ZCmm.md.png)
+![](https://i.loli.net/2020/11/18/DFEd1eYLKoUiOPt.png)
 
-![img](https://wx1.sbimg.cn/2020/08/31/6ZDdU.md.png)
+![](https://i.loli.net/2020/11/18/mT37Osnkld1B48q.png)
 
 **2. 通过注解方式实现AOP**
 
@@ -283,6 +278,6 @@ public void after(JoinPoint jp){
 
 **bean的实例化是保存在IOC容器中, 但是每次request是请求servlet容器**
 
-![img](https://wx2.sbimg.cn/2020/08/31/6ZPZd.md.png)
+![](https://i.loli.net/2020/11/18/BCQGaXtbdUYVDnP.png)
 
 **解决方法: 在servlet中的 init() 方法中获取SpringIOC容器中的bean对象(即是初始化servlet时获取对象)**

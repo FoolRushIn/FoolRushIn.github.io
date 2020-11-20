@@ -30,8 +30,6 @@ tags:
   - 如果网络层协议无法为主机之间发送的运输层报文段提供时延或带宽保证,运输层协议也无法为进程之间发送的应用程序报文提供时延或带宽保证
 - 即使底层网络协议不能在网络层提供相应的服务,运输层协议也能提供某些服务
 
-![](https://wx1.sbimg.cn/2020/08/02/Pb4CA.md.jpg)
-
 ### 运输层概述
 
 ==将TCP和UDP的分组统称为报文段,将网络层分组称为数据报==
@@ -69,18 +67,18 @@ TCP提供更多服务，必然会比UDP复杂。
 - **多路分解：**将运输层报文段中的数据交付到正确的套接字的工作
 - **多路复用：**在源主机从不同套接字中收集数据块，并为每个数据块封装上首部信息（用于在以后分解）从而生成报文段，然后将报文段传递到网络层的工作
 
-### 运输层多路服用的要求
+### 运输层多路复用的要求
 
 1. 套接字有唯一标识符
 2. 每个报文段有特殊字段来指示该报文段所要交付到的套接字
+   1. 源端口号字段
+   2. 目的端口号字段
 
-![特殊字段](https://wx1.sbimg.cn/2020/08/02/PbPrk.md.png)
-
-如上图,特殊字段是**源端口号字段**和**目的端口号字段**. (端口号是一个16比特的数,大小在0 ~ 65535. 0 ~1023范围的端口号是周知端口号，是受限制的，它们保留给诸如HTTP（端口号80）和FTP（端口号21）之类的周知应用层协议来使用。)
+特殊字段是**源端口号字段**和**目的端口号字段**. (端口号是一个16比特的数,大小在0 ~ 65535. 0 ~1023范围的端口号是周知端口号，是受限制的，它们保留给诸如HTTP（端口号80）和FTP（端口号21）之类的周知应用层协议来使用。)
 
 **常用服务及其端口号**
 
-![](https://wx2.sbimg.cn/2020/08/02/Pb3Cn.md.png)
+![](https://i.loli.net/2020/11/19/IlwMRQp3c5ZHYNG.png)
 
 **运输层实现分解服务:**
 
@@ -122,7 +120,7 @@ TCP提供更多服务，必然会比UDP复杂。
 
 ### UDP报文段结构
 
-![](https://wx2.sbimg.cn/2020/08/04/PfGo8.md.png)
+![](https://i.loli.net/2020/11/19/JuC2O1aPXnKwz3r.png)
 
 UDP报文段结构由RFC 768定义，UDP首部只有4个字段，每个字段由两个字节组成。　　
 
@@ -153,7 +151,7 @@ UDP报文段结构由RFC 768定义，UDP首部只有4个字段，每个字段由
 
 　　（图解：FSM描述中的箭头指示了协议从一个状态变迁到另一个状态。引起变迁的事件显示在横线的上方，事件发生时所采用的运动显示在横线的下方。FSM的初始状态用虚线表示。）
 
-　　![img](https://img2018.cnblogs.com/blog/226988/201906/226988-20190608160537636-82557925.png)
+![](https://i.loli.net/2020/11/19/KxN89DAmsWj3RLq.png)
 
 - 因为信道可靠，接收方也不需要提供任何反馈信息给发送方
 - 假定了接收方接收数据的速率能够与发送方发送数据的速率一样快，所以接收方也没有必要请求发送方慢一点发送。
@@ -162,7 +160,7 @@ UDP报文段结构由RFC 768定义，UDP首部只有4个字段，每个字段由
 
 　　下图为rdt 2.0 的有限状态机描述图，该数据传输协议（自动重传请求协议）采用了**==差错检测==**、**==肯定确认==**与**==否定确认==**。
 
-　　![img](https://img2018.cnblogs.com/blog/226988/201906/226988-20190608161751788-910745346.png)
+![](https://i.loli.net/2020/11/19/18XAe9C3uIkDEZd.png)
 
 - 在发送端
 
@@ -205,7 +203,7 @@ UDP报文段结构由RFC 768定义，UDP首部只有4个字段，每个字段由
 
 　　下图是`rdt 3.0`的发送方FSM，该协议运行在可能发生出错和丢失的信道上。
 
-![img](https://img2018.cnblogs.com/blog/226988/201906/226988-20190608162920642-1166593130.png)
+![](https://i.loli.net/2020/11/19/ykorjEqdAcJgUPv.png)
 
 　　rdt 2.2 协议中的接收端有限状态机描述图仍然适用于 rdt 3.0 协议，下面我仍然用文字来简要描述一下上图中的发送端发送分组流程：
 
@@ -269,9 +267,9 @@ GBN发送方必须响应三种类型的事件
  2、可接受的分组
  3、期待，还未收到的分组
 
-![](https://upload-images.jianshu.io/upload_images/3629436-42d9dc9acd4aba6e.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+![](https://i.loli.net/2020/11/19/vsrnUkpLAOXmV4E.png)
 
-![](https://mmbiz.qpic.cn/mmbiz_jpg/j5D4MI5U9vX67Ziaria9ibcMMNVR5Gn2zUFPbJaxr30iaNze41BbOphdpYDGN7TLqGA48nt7x9FnkOvcTA5msDuJow/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![](https://i.loli.net/2020/11/19/k1Z98eWtX6jmnUR.png)
 
 ## 面向连接的运输 TCP
 
@@ -283,7 +281,7 @@ TCP为每块客户数据配上一个TCP首部,从而形成了多个**TCP报文�
 
 ### TCP报文段结构
 
-![](https://upload-images.jianshu.io/upload_images/3629436-3a605f7a79d93ced.png?imageMogr2/auto-orient/strip|imageView2/2/w/824/format/webp)
+![](https://i.loli.net/2020/11/19/LqQvuRJlIVaUOj9.png)
 
 - 源端口号和目的端口号：用于多路复用/分解
 - 序号和确认号：被TCP发送方和接收方用来实现可靠数据传输服务
@@ -354,17 +352,15 @@ TCP为每块客户数据配上一个TCP首部,从而形成了多个**TCP报文�
 
 **TCP 协议规定SYN报文虽然不携带数据， 但是也要消耗1个序列号， 所以前两次握手客户端和服务端都需要向对方回复 x+1 或 y+1 。**
 
-![](https://wx1.sbimg.cn/2020/08/27/6GdT2.md.png)
-
 此后客户端和服务器端进行正常的数据传输。这就是“三次握手”的过程。
 
-![](https://pics1.baidu.com/feed/d8f9d72a6059252d20d93b0a6645fb3e59b5b9d2.jpeg?token=c86d4509157378798ebbccbe843486d1&s=9746F8123F5754CA48D574DA0300D0B2)
+![](https://i.loli.net/2020/11/19/T1Um8iB7YVoxrHO.jpg)
 
 
 
 **三次握手动态实现过程**
 
-![动态实现过程](https://wx1.sbimg.cn/2020/07/25/DSM6U.gif)
+![](https://i.loli.net/2020/11/19/Z1lfhe6iwSNVQbv.gif)
 
 **为什么进行三次握手**
 
@@ -381,7 +377,7 @@ PS：失效的连接请求：若客户端向服务端发送的连接请求丢失
 
 我们知道，TCP连接是双向的，因此在四次挥手中，前两次挥手用于断开一个方向的连接，后两次挥手用于断开另一方向的连接。
 
-![](https://pics5.baidu.com/feed/48540923dd54564e5260495ce0006487d0584fb6.jpeg?token=c3a743af38e25ff66deb6a07891be58e&s=C584FC1A71CFF4EE1A75A45203007073)
+![](https://i.loli.net/2020/11/19/iuX9CWhJglUd5YO.jpg)
 
 1. 首先客户端想要释放连接，向服务器端发送一段TCP报文，其中：
 
@@ -535,8 +531,9 @@ TCP连接在开始的时候，其cwnd常设置为一个MSS，然后在慢启动�
 **3.快速恢复**
 
 在快速恢复阶段，对于引起TCP进入该状态的缺失报文段，每收到一个ACK，cwnd增加一个MSS；最终，当对丢失报文段的一个ACK到达时，TCP降低cwnd后进入拥塞避免状态；如果出现超时事件，快速恢复在执行如同慢启动和拥塞避免中相同动作后，进入慢启动状态.
-![]( https://img-blog.csdnimg.cn/20190731184935595.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDMxNDA2,size_16,color_FFFFFF,t_70)
 
-# ![img](https://img-blog.csdnimg.cn/20190325133948229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2NDcy,size_16,color_FFFFFF,t_70)
+![](https://i.loli.net/2020/11/19/v1NA5MSjUkXGglu.png)
+
+![](https://i.loli.net/2020/11/19/gE28pmuqk5tSyrI.png)
 
 当多条连接共享一条瓶颈链路时，那些具有较小RTT的连接能够在链路空闲时更快的抢到可用带宽（即较快的打开其拥塞窗口），因而将比那些具有较大RTT的连接享用更高的吞吐量。

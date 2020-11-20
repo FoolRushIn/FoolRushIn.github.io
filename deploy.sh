@@ -8,7 +8,7 @@ npm run build
 cd public
 
 # 如果是发布到自定义域名
-echo 'www.suelcun.xyz' > CNAME
+# echo 'www.suelcun.xyz' > CNAME
 
 git init
 git add -A
