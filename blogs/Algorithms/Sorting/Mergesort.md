@@ -60,7 +60,7 @@ private static void merge(Comparable[] a, int lo, int mid, int hi) {
 
 
 
-![avatar](https://wx1.sbimg.cn/2020/06/01/merge.md.png)
+![](https://i.loli.net/2020/11/20/shx9p4PAi8GgnUt.png)
 
 
 
@@ -90,7 +90,7 @@ public class Merge{
 }
 ```
 
-![avatar](https://wx2.sbimg.cn/2020/06/01/mergesortTD.md.png)
+![](https://i.loli.net/2020/11/20/aFUGjPvzSlYp7f1.png)
 
 ### 命题 1
 
@@ -102,7 +102,7 @@ public class Merge{
 
 - 用不同的方法来处理小规模问题能改进大多数递归算法的性能,因为递归会使小规模问题中方法的调用过于频繁
 
-  ![avatar](https://wx2.sbimg.cn/2020/06/03/mergesortTD-bars.png)
+  ![](https://i.loli.net/2020/11/20/HQgN3x2doE7kZmz.png)
 
 ### 测试数组是否已经有序
 
@@ -165,7 +165,7 @@ public class MergeBU{
 }
 ```
 
-![avatar](https://wx2.sbimg.cn/2020/06/03/mergesortBU.md.png)
+![](https://i.loli.net/2020/11/20/WoQHC1MzI4gsyaP.png)
 
 ### 命题 2 
 
@@ -179,9 +179,8 @@ public class MergeBU{
 ### 命题 3
 
 没有任何**基于比较**!的算法能够保证使用少于 $lg(N!)$ ~ $NlgN$ 次比较将长度为N的数组排序  
-![avatar](https://wx1.sbimg.cn/2020/06/03/IMG_20200603_210513.md.jpg)
-
-![avatar](https://wx2.sbimg.cn/2020/06/03/IMG_20200603_210535.md.jpg)
+![](https://i.loli.net/2020/11/20/ujF2l6Hs1ecJ3nD.jpg)
+![](https://i.loli.net/2020/11/20/TQukDfIv2yUYZ4K.jpg)
 
 ### 命题 4
 

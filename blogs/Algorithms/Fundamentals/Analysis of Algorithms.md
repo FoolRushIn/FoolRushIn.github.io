@@ -18,8 +18,9 @@ tags:
 4. 对于给定的输入,判断这些操作的执行频率。这可能需要进行数学分析  
 ---
 
-![avatar](https://wx2.sbimg.cn/2020/05/21/classifications.md.png)
-![avatar](https://wx1.sbimg.cn/2020/05/23/IMG_20200523_201243.md.jpg)  
+![](https://i.loli.net/2020/11/20/m35LirpHAoQ7VFB.png)
+
+![](https://i.loli.net/2020/11/20/9VMuqpYvlyQKaW1.png)  
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**命题C(倍率定理), 如果$T(N)$~$aN^blgN$, 那么$T(2N)/T(N)$~$2^b$**  
@@ -45,12 +46,13 @@ tags:
 ### 对象
 
 要知道一个对象所使用的内存量,需要将所有的实例变量使用的内存与对象本身的开销(一般是16字节)相加. 这些开销包括一个指向对象的类的引用、垃圾收集信息以及同步信息.   
-![avatar](https://wx2.sbimg.cn/2020/05/23/Date-memory.png)  
+![](https://i.loli.net/2020/11/20/rqvjk1SdHXWsFPa.png)  
 **一个Data对象需要32字节: 16字节的对象开销,3个int实例变量各需4字节,以及4个填充字节**, 对象的引用一般都是一个对象地址,会使用8字节(一般对象的使用会被填充为8字节的倍数)  
 在说明一个引用所占的内存时,**会单独说明它指向的对象所占用的内存**
 
 ### 链表
-![avatar](https://wx1.sbimg.cn/2020/05/23/Node-memory.png)  
+![](https://i.loli.net/2020/11/20/NjaMfkXi6dJHPrU.png)  
 嵌套的非静态(内部)类,还需要额外的8字节(用于一个指向外部类的引用),图中Node对象需要40字节(16字节的对象开销,指向Item和Node的引用各需8字节,还有8字节的额外开销)  
+
 ### 数组
 Java中数组被实现为对象,它们一般都会因为记录长度而需要额外的内存

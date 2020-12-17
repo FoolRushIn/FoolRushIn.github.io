@@ -31,7 +31,7 @@ tags:
 
     - 归并排序中一个数组被分为两半 
 
-      ![avatar](https://wx1.sbimg.cn/2020/06/06/quicksort-overview.png)
+      ![](https://i.loli.net/2020/11/20/l9mgqnNfhIMzaUQ.png)
 
 ### 快速排序中会采用sort()方法来将数组乱序,消除对输入的依赖
 
@@ -63,7 +63,7 @@ private static void sort(Comparable[] a, int lo, int hi){
 4. 交换它们的位置  
 5. 继续扫描
 6. 当两个指针相遇时,将切分元素 a [ lo ] 和左子数组最右侧的元素交换然后返回 j 即可
-   ![avatar](https://wx1.sbimg.cn/2020/06/06/partitioning-overview.png)
+   ![](https://i.loli.net/2020/11/20/A4a6wU1mcLCPFdp.png)
 
 ```java
 private static int partition(Comparable[] a, int lo, int hi){
@@ -85,7 +85,7 @@ private static int partition(Comparable[] a, int lo, int hi){
 }
 ```
 
-![avatar](https://wx1.sbimg.cn/2020/06/06/partitioning.md.png)
+![](https://i.loli.net/2020/11/20/4ODAwfxg1icIhsm.png)
 
 ### 注意事项
 
@@ -168,7 +168,7 @@ if(hi <= lo + M){		//转换参数M的最佳值是和系统相关的,但是5~15�
 
 一个简单的想法是将数组切分为3部分,分别对应小于,等于和大于切分元素的数组元素
 
-![avatar](https://wx1.sbimg.cn/2020/06/07/quicksort-bars.md.png)
+![](https://i.loli.net/2020/11/20/xcHIBNDCYproa51.png)
 
 一开始 i 和 lo 相等,使用Comparable接口( 而非less() )对a [ i ] 进行三向比较来直接处理以下情况
 
@@ -202,9 +202,9 @@ public class Quick3way{
 }
 ```
 
-![avatar](https://wx2.sbimg.cn/2020/06/07/partitioning3.png)
+![](https://i.loli.net/2020/11/20/3UA8HpjPVGXzxv2.png)
 
-![avatar](https://wx1.sbimg.cn/2020/06/07/quicksort3-bars.md.png)
+![](https://i.loli.net/2020/11/20/gzA7aUelDiP9Mho.png)
 
 **对于只有若干不同主键的随机数组,归并排序的时间复杂度是线性对数的,而三向切分快速排序是线性的**
 

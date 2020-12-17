@@ -23,7 +23,7 @@ tags:
 优先队列是一种抽象数据类型,表示了一组值和对这些值的操作  
 优先队列最重要的操作就是**删除最大元素**和**插入元素**
 
-![avatar](https://wx1.sbimg.cn/2020/06/13/pq-api.md.png)
+![](https://i.loli.net/2020/11/20/mzaANkpJ4tLcY98.png)
 
 ##### 优先队列的调用示例
 
@@ -89,7 +89,7 @@ insert()方法的代码和栈的push()方法完全一样. 要实现删除最大�
 |    堆    |  $logN$  |    $logN$    |
 | 理想情况 |    1     |      1       |
 
-![avatar](https://wx1.sbimg.cn/2020/06/13/pq-array.md.png)
+![](https://i.loli.net/2020/11/20/CfZSrkXx4tncH2R.png)
 
 ## 堆的定义
 
@@ -106,14 +106,14 @@ insert()方法的代码和栈的push()方法完全一样. 要实现删除最大�
 用指针来表示堆有序的二叉树,那么每个元素都需要三个指针来找到它的上下结点(父结点和两个子结点各需要一个).  
 完全二叉树只用数组而不需要指针就可以表示,具体方法是将二叉树的结点按照层级顺序放入数组中,根结点在位置1,它的子结点在位置2和3,依次类推  
 
-![avatar](https://wx2.sbimg.cn/2020/06/14/heap.png)
+![](https://i.loli.net/2020/11/20/nYjVU3I2WB6LS8R.png)
 
 ##### 二叉堆是一组能够用堆有序的完全二叉树排序的元素,并在数组中按照层级储存(不使用数组的第一个位置)
 
 - 在一个堆中,位置 $k$  的结点的父结点的位置为**不大于 $k/2$ 的最大整数**,而它的两个子结点的位置则分别为 $2k$ 和 $2k+1$ 
 - 这样在不使用指针的情况下,可以通过计算数组的索引在树中上下移动: 从 $a[k]$ 向上一层就令 $k$ 等于 $k/2$ ,向下一层则令 $k$ 等于 $2k$ 或 $2k+1$ 
 
-![avatar](https://wx1.sbimg.cn/2020/06/14/heap-representations.png)
+![](https://i.loli.net/2020/11/20/D4xLO9tKlsvFuUi.png)
 
 ### 命题
 
@@ -137,7 +137,7 @@ insert()方法的代码和栈的push()方法完全一样. 要实现删除最大�
 
 - 位置为 k 的父结点的位置是 **不大于$k/2$的最大整数**
 
-![avatar](https://wx2.sbimg.cn/2020/06/14/swim.png)
+![](https://i.loli.net/2020/11/20/lX5nMAYdF7s41V8.png)
 
 ```java
 private void swim(int k){
@@ -155,7 +155,7 @@ private void swim(int k){
 
 - 由位置为 k  的结点的子结点位于 2k 和 2k+1 可以直接得到对应的代码
 
-![avatar](https://wx2.sbimg.cn/2020/06/14/sink.png)
+![](https://i.loli.net/2020/11/20/AvnkeNJw4SmxibO.png)
 
 ```java
 private void sink(int k) {
@@ -179,7 +179,7 @@ private void sink(int k) {
 
 从数组顶端删去最大的元素并将数组的最后一个元素放到顶端,减小堆的大小并让这个元素下沉到合适的位置(如下图右)
 
-![avatar](https://wx1.sbimg.cn/2020/06/14/heap-ops.md.png)
+![](https://i.loli.net/2020/11/20/tzXRdyFOUBDTgcW.png)
 
 ```java
 public class MaxPQ<Key extends Comparable<Key>> {
@@ -247,7 +247,6 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
   当用例已经有了总量为N的多个元素,而且还可能同时使用了多个(平行)数组来存储这些元素信息. 此时,其他无关的用例代码可能已经在使用一个整数索引来引用这些元素了
 
-  ![avatar](https://wx2.sbimg.cn/2020/06/15/indexpq-api.md.png)
 
 理解这种数据结构的一个较好的方法是将它看成一个能够快速访问其中最小元素的数组  
 它能够快速访问数组的一个特定子集中的最小元素(指所有被插入的元素)
@@ -316,9 +315,9 @@ public class Multiway{
 
 #### 命题
 
-用下称操作由N个元素构造堆只需少于 2N 次比较以及少于 N 次交换
+用下沉操作由N个元素构造堆只需少于 2N 次比较以及少于 N 次交换
 
-![avatar](https://wx2.sbimg.cn/2020/06/15/heapify-analysis1.md.png)
+![](https://i.loli.net/2020/11/20/YBCWfugb4Dz5XEV.png)
 
 证明: 由上图(完美二叉树情况),已知高度为k一共由 2^(h-k) 个结点, AND高度为k的结点在sink()时最多能与k个键交换,得到公式
 
@@ -337,7 +336,7 @@ $$ \begin{eqnarray*} h + 2(h-1) + 4(h-2) + 8(h-3) + \ldots + 2^h (0) & = & 2^{h+
 2. 下沉高度为k的节点最多需要k次交换。
 3. 我们将对每个节点在高度k处的k个链接收费，但不必对下沉节点时所走路径上的链接收费。相反，我们对从左-右-右-右的节点沿着路径的k链接给节点充电。例如:根节点为4个红色链接充电:蓝色节点为3个蓝色链接充电;等等。
 
-![avatar](https://wx1.sbimg.cn/2020/06/15/heapify-analysis2.md.png)
+![](https://i.loli.net/2020/11/20/JBOyP2Q3CMDG1np.png)
 
 4. 注意，任何链接都不向一个以上的节点收费。(从根目录中仅通过正确的链接获得的链接不向任何节点收费。)
 5. 因此，交换的总数最多不超过n次。由于每次交换最多有2次比较，所以比较的总数最多不超过2n次。
@@ -365,9 +364,9 @@ private static void sink(Comparable[] pq, int k, int n) {
 }
 ```
 
-![avatar](https://wx1.sbimg.cn/2020/06/15/heapsort-trace.md.png)
+![](https://i.loli.net/2020/11/20/CfGEFpsXOUyk2Jv.png)
 
-![avatar](https://wx2.sbimg.cn/2020/06/15/heapsort.png)
+![](https://i.loli.net/2020/11/20/X6VGPaJxv1oAYtz.png)
 
 ### 下沉排序
 
@@ -376,8 +375,6 @@ private static void sink(Comparable[] pq, int k, int n) {
 #### 命题
 
 将N个元素排序,堆排序只需要少于$(2NlgN+2N)$次比较,以及一半次数的交换
-
-![avatar](https://wx1.sbimg.cn/2020/06/15/IMG_20200615_221527.md.jpg)
 
 ### 先下沉后上浮
 

@@ -42,9 +42,10 @@ B． 判断两个元素是否属于同一个集合,通过find(i)和find(j)是否
 
 - 在判断两个触点是否为同一分量时十分快速,只需要访问id[]数组一次,即只需要判断id[i]和id[j]就行了  
 - 但是在进行union()操作时,对于**每一对**输入union()都需要将整个数组遍历一遍,改变对应的id[]  
-  ![avatar](https://wx2.sbimg.cn/2020/05/24/quick-find-overview.png)  
-  ##### 命题F: 在quick-find算法中,每次find()调用只需要访问数组一次,而归并两个分量的union()操作访问数组的次数在(N+3)到(2N+1)之间
-
+  ![](https://i.loli.net/2020/11/20/eabqT4xvJMKHXBN.png)  
+  
+##### 命题F: 在quick-find算法中,每次find()调用只需要访问数组一次,而归并两个分量的union()操作访问数组的次数在(N+3)到(2N+1)之间
+  
   假设我们使用quick-find算法解决动态连通性问题，并且最后只得到了一个连通分量，那么至少需要调用N-1次union()，即至少$（N+3）*（N-1）~N²$次数访问，因而可以得出结论，quick-find算法的运行时间对于最终只能得到少数连通分量的一般应用是平方级别的。  
 
 #### quick-union算法:
@@ -53,7 +54,7 @@ B． 判断两个元素是否属于同一个集合,通过find(i)和find(j)是否
 - 最好的情况: find()只需要访问数组一次就可以得到一个触点所在的分量的标识符
 - 最坏的情况: find()需要 2N+1 次数组访问  
 - 与quick-find算法比较: 解决了union()操作总是线性级别的问题  
-  ![avatar](https://wx1.sbimg.cn/2020/05/24/quick-union-overview.png)  
+  ![](https://i.loli.net/2020/11/20/GtTh3svILFdQRac.png)  
 
   ##### 命题G: quick-union算法中的find()方法访问数组的次数为1加上给定触点所对应的节点的深度的两倍. union()和connected()访问数组的次数为两次find()操作(如果union()中给定的两个触点分别存在于不同的树中则还需要加1)
 
@@ -62,7 +63,7 @@ B． 判断两个元素是否属于同一个集合,通过find(i)和find(j)是否
 
 - 最坏情况: 其中将要被归并的树的大小总是相等的
 - 加权quick-union算法能够保证**对数级别**的性能  
-![avatar](https://wx2.sbimg.cn/2020/05/24/weighted-quick-union-overview.png)  
+![](https://i.loli.net/2020/11/20/AH7GEdlLg34oY2C.png)  
 
 ```java
 public class WeightedQuickUnionUF{
@@ -115,7 +116,7 @@ public class WeightedQuickUnionUF{
 **此算法处理N个触点和M条链接时最多访问数组cMlgN次,其中c为常数**    
 
 
-![avatar](https://wx2.sbimg.cn/2020/05/24/uf-performance.md.png)
+![](https://i.loli.net/2020/11/20/WPkfHxQJ2BjTL8Z.png)
 
 #### 最优算法(这儿通过路径压缩方法实现):
 

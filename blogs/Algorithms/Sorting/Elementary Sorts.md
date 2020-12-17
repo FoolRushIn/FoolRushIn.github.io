@@ -52,7 +52,7 @@ tags:
         //exch为交换方法:交换数组a中索引为i和min的元素
     }
 ```
-![avatar](https://wx2.sbimg.cn/2020/05/30/selection.png)
+![](https://i.loli.net/2020/11/20/IV3QCiJDKLNfh7X.png)
 
 ## 插入排序
 
@@ -78,7 +78,7 @@ tags:
         }
     }
 ```
-![avatar](https://wx2.sbimg.cn/2020/05/30/insertion.png)  
+![](https://i.loli.net/2020/11/20/pEQzKr16N3LmdJ7.png)  
 
 #### 如果数组中倒置的数量小于数组大小的某个倍数,那么这个数组是部分有序的
 
@@ -98,7 +98,7 @@ tags:
 在内循环中将较大的元素都向右移动而不总是交换两个元素(达到访问数组次数减半的效果)  
 ### 两种数组的比较
 
-![avatar](https://wx1.sbimg.cn/2020/05/30/bars.png)  
+![](https://i.loli.net/2020/11/20/ieZM6QfDa13HdLc.png)  
 
 - 插入排序不会访问索引右侧的元素
 - 选择排序不会访问索引左侧的元素
@@ -112,7 +112,7 @@ tags:
 - 是基于插入排序的快速的排序算法
 - 改进插入排序,交换不相邻的元素以及对数组的局部进行排序,最终用插入排序将局部的数组排序  
 - 使数组中任意间隔为h的元素都是有序的,这样的数组称为 h有序数组  
-![avatar](https://wx1.sbimg.cn/2020/05/30/h-sorted.png)
+- ![](https://i.loli.net/2020/11/20/LQx4Wv8DVanGgYd.png)
 #### 希尔排序的两种方法:
 1. 对于每个h,用插入排序将h个子数组进行独立地排序
 2. 在子数组中将每个元素交换到比它大地元素之前去(将比它大地元素向右移动一格),只需要在插入排序的代码中将以移动元素的距离交换到比它大的元素之前去
@@ -143,7 +143,7 @@ while(h < N/3)
         }
     }
 ```
-![avatar](https://wx2.sbimg.cn/2020/05/30/shell.md.png)  
+![](https://i.loli.net/2020/11/20/W2nxcFIYZUmrPAt.png)  
 - 希尔排序也可以用于大型数组,对任意排序(不一定是随机的)的数组表现也很好  
 
 - 对于上方给出的递增序列实现的算法,它的运行时间达不到平方级别,已知在最坏情况下,该算法的比较次数和N^(3/2)成正比  
@@ -151,4 +151,4 @@ while(h < N/3)
   
 ##### 希尔排序的可视轨迹
 
-![avatar](https://wx1.sbimg.cn/2020/05/30/shell-bars.md.png)  
+![](https://i.loli.net/2020/11/20/S9BMD8GdPNbFEje.png)  

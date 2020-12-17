@@ -15,7 +15,7 @@ module.exports = {
     [
     "@vuepress-reco/vuepress-plugin-kan-ban-niang",
     {
-      theme: ["blackCat"],
+      theme: ["wanko"],
       clean: false,
       messages: {
         welcome: '我是lookroot欢迎你的关注 ',
