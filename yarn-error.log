@@ -1,0 +1,52 @@
+Arguments: 
+  D:\APP\nodejs\node.exe D:\APP\nodejs\node_global\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\sue\bin;D:\APP\Git\mingw64\bin;D:\APP\Git\usr\local\bin;D:\APP\Git\usr\bin;D:\APP\Git\usr\bin;D:\APP\Git\mingw64\bin;D:\APP\Git\usr\bin;C:\Users\sue\bin;D:\APP\Oracle11g\product\11.2.0\dbhome_1\bin;D:\APP\VMware\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;D:\APP\jdk\jdk11_windows-x64_bin\jdk-11\bin;D:\APP\jdk\jdk11_windows-x64_bin\jdk-11\jre\bin;D:\APP\Git\cmd;D:\APP\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;D:\APP\gradle-6.7.1-all\gradle-6.7.1\bin;D:\APP\nodejs;C:\Users\sue\AppData\Local\Microsoft\WindowsApps;D:\APP\IntelliJ IDEA 2020.1.1\bin;D:\APP\Microsoft VS Code\bin;D:\APP\nodejs\node_global;D:\APP\Git\usr\bin\vendor_perl;D:\APP\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: Can't answer a question unless a user TTY
+      at ConsoleReporter.question (D:\APP\nodejs\node_global\node_modules\yarn\lib\cli.js:96361:59)
+      at Object.<anonymous> (D:\APP\nodejs\node_global\node_modules\yarn\lib\cli.js:88636:38)
+      at Generator.next (<anonymous>)
+      at step (D:\APP\nodejs\node_global\node_modules\yarn\lib\cli.js:310:30)
+      at D:\APP\nodejs\node_global\node_modules\yarn\lib\cli.js:321:13
+      at processTicksAndRejections (internal/process/task_queues.js:93:5)
+
+npm manifest: 
+  {
+    "name": "Sue-blog",
+    "version": "1.0.0",
+    "author": "reco_luan",
+    "scripts": {
+      "dev": "vuepress dev .",
+      "build": "vuepress build ."
+    },
+    "devDependencies": {
+      "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
+      "vuepress": "^1.7.1",
+      "vuepress-plugin-cursor-effects": "^1.0.0",
+      "vuepress-plugin-dynamic-title": "^1.0.0",
+      "vuepress-theme-reco": "1.5.5"
+    },
+    "dependencies": {
+      "@mr-hope/vuepress-plugin-last-update": "^1.5.7",
+      "vue-class-component": "^7.2.3"
+    },
+    "description": "Sue-blog"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
