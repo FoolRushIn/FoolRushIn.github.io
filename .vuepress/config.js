@@ -2,16 +2,16 @@ module.exports = {
 
   "plugins": [
 	["@vuepress/last-updated"],
-    [
-      "dynamic-title",
-      {
-        showIcon: "/favicon.ico",
-        showText: "(/≧▽≦/)咦！又好了！",
-        hideIcon: "/failure.ico",
-        hideText: "(●—●)喔哟，崩溃啦！",
-        recoverTime: 2000
-      }
-    ],
+    // [
+    //   "dynamic-title",
+    //   {
+    //     showIcon: "/favicon.ico",
+    //     showText: "(/≧▽≦/)咦！又好了！",
+    //     hideIcon: "/failure.ico",
+    //     hideText: "(●—●)喔哟，崩溃啦！",
+    //     recoverTime: 2000
+    //   }
+    // ],
     [
     "@vuepress-reco/vuepress-plugin-kan-ban-niang",
     {
@@ -19,7 +19,7 @@ module.exports = {
       clean: false,
       messages: {
         welcome: '我是lookroot欢迎你的关注 ',
-        home: '心里的花，我想要带你回家。',
+        home: '菠萝菠萝蜜',
         theme: '好吧，希望你能喜欢我的其他小伙伴。',
         close: '再见哦'
       }
